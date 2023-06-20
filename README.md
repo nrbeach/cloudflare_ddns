@@ -9,7 +9,7 @@ I've modified this slightly more towards my workflow, i.e. managing multiple hos
 Usage:
 `cloudflare_ddns.py` accepts a JSON blob at the command line that provides the necessary details for the Cloudflare API.
 
-`# cloudflare_ddns.py "{'1234567': [{'record_id': '11111111', name: "foo.com", "proxied": true}]}`
+`# cloudflare_ddns.py '{"1234567": [{"record_id": "11111111", name: "foo.com", "proxied": true}]}'`
 
 ```json
 {
