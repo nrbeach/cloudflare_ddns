@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+    name: cloudflare-ddns
+spec:
+    schedule: 5 3,15 * * *
+    jobTemplate:
+        spec:
+            template:
+                spec:
+                    containers:
+                        - name: cloudflare-ddns
+                          image: <path to your docker registry>
+                          imagePullPolicy: IfNotPresent
+                          command: [python3, /app/cloudflare_ddns.py]
+                          args: []
+                          envFrom:
+                              - secretRef:
+                                    name: cloudflare-apikey
+                    imagePullSecrets:
+                        - name: registry_credentials
+                    restartPolicy: OnFailure
